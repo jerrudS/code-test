@@ -17,6 +17,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 }
 
 function filterLocation(companies) {
+  const companyArray = []
   companies.map(company => {
     company.offices.map(each => {
       const coordinates = each.coordinates.split(',')
@@ -26,10 +27,23 @@ function filterLocation(companies) {
       if (calculateDistance(lat1, lon1, lat2, lon2) <= 100) {
         const companyName = company.organization
         const address = each.address
-        console.log(companyName, address)
+        companyArray.push({ companyName, address })
       }
     })
   })
+  const sorted = companyArray.sort(function (a, b) {
+    const nameA = a.companyName.toUpperCase()
+    const nameB = b.companyName.toUpperCase()
+    if (nameA < nameB) {
+      return -1
+    }
+    if (nameA > nameB) {
+      return 1
+    }
+    return 0
+  })
+  console.log(sorted)
+  return sorted
 }
 
 module.exports = filterLocation
