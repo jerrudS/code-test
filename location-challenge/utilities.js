@@ -1,7 +1,7 @@
 const lat1 = 51.515419
 const lon1 = -0.141099
 
-function calculateDistance(lat1, lon1, lat2, lon2) {
+var calculateDistance = function (lat1, lon1, lat2, lon2) {
   const R = 6371
   const pi = Math.PI
   const φ1 = lat1 * (pi / 180)
@@ -16,7 +16,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return distance
 }
 
-function filterLocation(companies) {
+var filterLocation = function (companies) {
   const companyArray = []
   companies.map(company => {
     company.offices.map(each => {
@@ -46,4 +46,7 @@ function filterLocation(companies) {
   return sorted
 }
 
-module.exports = filterLocation
+module.exports = {
+  filterLocation: filterLocation,
+  calculateDistance: calculateDistance
+}
