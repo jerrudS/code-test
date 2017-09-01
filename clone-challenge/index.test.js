@@ -9,6 +9,6 @@ const person = {
 
 const expected = deepClone(person)
 
-assert(expected !== person, 'deepClone makes a deep clone')
+assert(expected !== person, 'deepClone should make a deep clone')
 
-assert(expected.address !== person.address, 'deepClone makes a deep clone')
+assert(expected.address !== person.address, 'deepClone should make a deep clone')

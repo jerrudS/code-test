@@ -1,5 +1,3 @@
-const deepClone = require('./deep-clone')
-
 const person = {
   name: 'Paddy',
   address: {
@@ -8,5 +6,13 @@ const person = {
   }
 }
 
+function deepClone(object) {
+  var clone = {}
+  clone = JSON.parse(JSON.stringify(object))
+  return clone
+}
+
 const clone = deepClone(person)
 console.log(person, clone)
+
+module.exports = deepClone
